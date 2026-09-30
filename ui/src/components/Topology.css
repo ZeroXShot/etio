@@ -1,0 +1,151 @@
+.topology {
+  overflow-x: auto;
+  padding: 18px 16px 8px;
+}
+
+.topology svg {
+  display: block;
+  height: auto;
+  margin: 0 auto;
+}
+
+.topology a,
+.topology text {
+  text-decoration: none;
+}
+
+.edge path {
+  fill: none;
+  stroke: var(--rule);
+}
+
+.edge polygon {
+  fill: var(--rule);
+}
+
+.edge.strong path {
+  stroke: var(--ink-2);
+}
+
+.edge.strong polygon {
+  fill: var(--ink-2);
+}
+
+.node-box {
+  fill: var(--sheet);
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.node.hot .node-box {
+  stroke: var(--ink);
+}
+
+.node.selected .node-box {
+  stroke: var(--signal);
+  stroke-width: 3;
+}
+
+.node.interactive {
+  cursor: pointer;
+}
+
+.node.interactive:hover .node-box {
+  fill: var(--sheet-2);
+}
+
+.node-heat {
+  shape-rendering: crispEdges;
+}
+
+.node-name {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  fill: var(--ink);
+}
+
+.node-sub {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--ink-3);
+}
+
+.node.hot .node-sub {
+  fill: var(--signal-text);
+}
+
+.node-rank rect {
+  fill: var(--ink);
+  stroke: var(--ink);
+  shape-rendering: crispEdges;
+}
+
+.node.selected .node-rank rect {
+  fill: var(--signal);
+}
+
+.node-rank text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  fill: var(--sheet);
+  text-anchor: middle;
+}
+
+.node.selected .node-rank text {
+  fill: var(--on-signal);
+}
+
+.node-trigger {
+  font-family: var(--font-mono);
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  fill: var(--ink-2);
+}
+
+g[role="button"]:focus-visible {
+  outline: none;
+}
+
+g[role="button"]:focus-visible .node-box {
+  stroke: var(--focus);
+  stroke-width: 2;
+}
+
+.surprise-legend {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 6px 14px;
+  padding: 10px 14px;
+  border-top: 1px solid var(--rule-2);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-2);
+}
+
+.surprise-step {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.surprise-legend .swatch {
+  stroke: var(--ink-3);
+  stroke-width: 1;
+  shape-rendering: crispEdges;
+}
+
+.legend-rank {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: var(--ink);
+  color: var(--sheet);
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 14px;
+  text-align: center;
+}
