@@ -1,0 +1,68 @@
+[build-system]
+requires = ["maturin>=1.9,<2.0"]
+build-backend = "maturin"
+
+[project]
+name = "etio"
+description = "Python bindings and evaluation harness for the Etio root-cause analysis engine"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "Apache-2.0"
+authors = [{ name = "The Etio Authors" }]
+keywords = ["root-cause-analysis", "aiops", "observability", "anomaly-detection", "benchmark"]
+classifiers = [
+    "Programming Language :: Rust",
+    "Programming Language :: Python :: 3",
+    "Topic :: System :: Monitoring",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dynamic = ["version"]
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.1",
+    "pyarrow>=15",
+]
+
+[project.optional-dependencies]
+# Official implementations of published baselines, used to validate Etio's
+# re-implementations. RCAEval's base package has no dependencies of its own.
+baselines = ["RCAEval==1.8.0", "scikit-learn>=1.4", "requests>=2.31", "tqdm>=4.66", "networkx>=3.2"]
+
+[project.scripts]
+etio-eval = "etio.cli:main"
+
+[project.urls]
+Repository = "https://github.com/ZeroXShot/etio"
+
+[dependency-groups]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[tool.uv]
+# Rebuild the native extension whenever the Rust sources change.
+cache-keys = [
+    { file = "pyproject.toml" },
+    { file = "../Cargo.toml" },
+    { file = "../Cargo.lock" },
+    { file = "../crates/etio-core/**" },
+    { file = "../crates/etio-analysis/**" },
+    { file = "../crates/etio-pipeline/**" },
+    { file = "../crates/etio-py/**" },
+]
+
+[tool.maturin]
+manifest-path = "../crates/etio-py/Cargo.toml"
+python-source = "src"
+module-name = "etio._native"
+features = ["pyo3/extension-module"]
+
+[tool.ruff]
+line-length = 120
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP", "SIM", "RUF", "N", "PL"]
+ignore = ["PLR0913", "PLR2004", "PLR0912", "PLR0915"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
