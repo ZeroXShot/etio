@@ -1,0 +1,47 @@
+# Routes telemetry to the Etio edges. Every span of a trace must reach the
+# same edge (it assembles traces), so traces and logs are balanced by trace
+# ID; metrics by service, so that each counter stream stays on one edge.
+receivers:
+  otlp:
+    protocols:
+      grpc:
+        endpoint: 0.0.0.0:4317
+
+processors:
+  batch:
+    timeout: 1s
+
+exporters:
+  loadbalancing/traces:
+    routing_key: traceID
+    protocol:
+      otlp:
+        tls:
+          insecure: true
+    resolver:
+      static:
+        hostnames: [etio-edge-0:4317, etio-edge-1:4317]
+  loadbalancing/metrics:
+    routing_key: service
+    protocol:
+      otlp:
+        tls:
+          insecure: true
+    resolver:
+      static:
+        hostnames: [etio-edge-0:4317, etio-edge-1:4317]
+
+service:
+  pipelines:
+    traces:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [loadbalancing/traces]
+    logs:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [loadbalancing/traces]
+    metrics:
+      receivers: [otlp]
+      processors: [batch]
+      exporters: [loadbalancing/metrics]

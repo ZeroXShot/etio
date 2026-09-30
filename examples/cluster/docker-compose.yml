@@ -1,0 +1,77 @@
+# Distributed Etio: two edges aggregate telemetry, a core detects and
+# analyses. A simulator stands in for the applications.
+#
+#   docker compose up -d --build
+#   open http://127.0.0.1:7070          (core UI)
+#
+# See docs/architecture.md for the edge/core protocol.
+name: etio-cluster
+
+x-edge: &edge
+  image: etio:dev
+  restart: unless-stopped
+  depends_on: [etio-core]
+  environment: &edge-env
+    ETIO__CLUSTER__ROLE: edge
+    ETIO__CLUSTER__CORES: '["http://etio-core:7071"]'
+    ETIO__CLUSTER__TOKEN_FILE: /run/secrets/cluster_token
+    ETIO__ENGINE__RESOLUTION: 5s
+  secrets: [cluster_token]
+
+services:
+  etio-core:
+    build: ../..
+    image: etio:dev
+    restart: unless-stopped
+    environment:
+      ETIO__CLUSTER__ROLE: core
+      ETIO__CLUSTER__TOKEN_FILE: /run/secrets/cluster_token
+      ETIO__ENGINE__RESOLUTION: 5s
+      ETIO__ENGINE__INCIDENT__WARMUP: 10m
+    secrets: [cluster_token]
+    ports:
+      - "127.0.0.1:${ETIO_UI_PORT:-7070}:7070"
+    volumes:
+      - core-data:/var/lib/etio
+
+  etio-edge-0:
+    <<: *edge
+    environment:
+      <<: *edge-env
+      ETIO__CLUSTER__EDGE_ID: edge-0
+
+  etio-edge-1:
+    <<: *edge
+    environment:
+      <<: *edge-env
+      ETIO__CLUSTER__EDGE_ID: edge-1
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.135.0
+    restart: unless-stopped
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./otel-collector.yaml:/etc/otelcol/config.yaml:ro
+    depends_on: [etio-edge-0, etio-edge-1]
+
+  simulator:
+    image: etio:dev
+    restart: unless-stopped
+    depends_on: [otel-collector]
+    healthcheck:
+      disable: true   # the simulator serves no API
+    command:
+      - sim
+      - run
+      - --endpoint=http://otel-collector:4317
+      - --topology=shop
+      - --duration=2h
+      - --fault=cpu=6:cart@15m+5m
+
+secrets:
+  # Generate it first:  openssl rand -hex 32 > cluster_token
+  cluster_token:
+    file: ./cluster_token
+
+volumes:
+  core-data:
