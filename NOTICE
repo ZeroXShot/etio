@@ -4,3 +4,7 @@ Copyright The Etio Authors
 This product includes the OpenTelemetry protocol definitions
 (proto/opentelemetry), Copyright The OpenTelemetry Authors, licensed under
 the Apache License 2.0 (see proto/opentelemetry/LICENSE).
+
+The web UI bundles the IBM Plex Sans and IBM Plex Mono typefaces (installed
+from the @fontsource npm packages), Copyright 2017, 2019 IBM Corp., licensed
+under the SIL Open Font License 1.1.
