@@ -1,0 +1,40 @@
+.chart {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.chart .uplot {
+  font-family: var(--font-mono);
+}
+
+.chart .u-cursor-x {
+  border-right: 1px solid var(--ink-2);
+}
+
+.chart .u-select {
+  background: var(--sheet-2);
+}
+
+.chart-readout {
+  position: absolute;
+  top: 3px;
+  right: 6px;
+  padding: 0 4px;
+  background: var(--sheet);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-variant-numeric: tabular-nums;
+  color: var(--ink);
+  pointer-events: none;
+  white-space: pre;
+}
+
+.chart-readout:empty {
+  display: none;
+}
+
+.chart-placeholder {
+  height: 150px;
+  border: 1px solid var(--rule-2);
+}
