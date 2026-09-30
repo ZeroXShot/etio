@@ -8,7 +8,11 @@ likely to have caused each incident, with the evidence behind the ranking.
 Status: pre-release (0.1). Interfaces, configuration keys and on-disk formats
 may change between minor versions until 1.0.
 
-![Incident view](docs/images/incident.png)
+![Incident report in the web UI](docs/images/incident.png)
+
+The incident report for a CPU fault injected into `payment` with the bundled
+simulator: analysis windows, verdict, ranked candidates, propagation on the
+call graph and the reasons behind the ranking.
 
 ## Features
 
@@ -32,6 +36,20 @@ may change between minor versions until 1.0.
   and analysis.
 - **Tooling**: a simulator of microservice systems with fault injection, and
   a Python package that runs the same Rust code for offline evaluation.
+
+## Architectural flow
+
+![Architectural flow](docs/images/architecture-flow.png)
+
+Telemetry moves left to right. The receivers decode OTLP in parallel and hand
+batches to a single engine thread over a bounded queue. The engine turns them
+into event-time window summaries, one value per series per window, per-series
+detection, incidents and ranked root causes, which leave through the API,
+webhooks and storage. The numbered badges mark where each design constraint
+applies. The source of the diagram is
+[`docs/diagrams/architecture-flow.excalidraw`](docs/diagrams/architecture-flow.excalidraw),
+editable with [Excalidraw](https://excalidraw.com); the details are in
+[docs/architecture.md](docs/architecture.md).
 
 ## Getting started
 
