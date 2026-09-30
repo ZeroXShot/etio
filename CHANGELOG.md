@@ -26,8 +26,12 @@ uses [Semantic Versioning](https://semver.org/).
 - Distributed mode: edges and cores exchanging mergeable window summaries
   over gRPC streams, at-least-once with deduplication, event-time deadlines,
   verified by deterministic simulation.
-- Web UI: incidents, candidates with contributions and evidence charts,
-  dependency graph, live updates, operator feedback.
+- Web UI: incident log with a history timeline; incident report with the
+  analysis windows, verdict, ranked candidates, propagation on the call
+  graph, score decomposition and annotated evidence charts; services and
+  engine views; live updates, operator feedback, light and dark themes,
+  local or UTC time, keyboard navigation. Graphics are pixel art drawn from
+  code, shading is dithered.
 - Simulator of microservice systems with fault injection, scenario and scale
   benchmarks.
 - Python bindings and evaluation harness for RCAEval, with bootstrap
