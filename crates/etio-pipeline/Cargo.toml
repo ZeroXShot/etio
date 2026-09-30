@@ -1,0 +1,32 @@
+[package]
+name = "etio-pipeline"
+description = "Trace assembly, log template mining and windowed aggregation for the Etio engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+etio-core.workspace = true
+serde.workspace = true
+thiserror.workspace = true
+hashbrown.workspace = true
+foldhash.workspace = true
+smallvec.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+criterion.workspace = true
+serde_json.workspace = true
+
+[[bench]]
+name = "pipeline"
+harness = false
+
+[lints]
+workspace = true
