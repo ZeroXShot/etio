@@ -1,0 +1,54 @@
+// The edge/core protocol of Etio.
+//
+// Edges stream sealed window summaries to cores over one long-lived,
+// bidirectional gRPC stream per core. Cores answer with cumulative
+// acknowledgements. Delivery is at-least-once: summaries are sequenced per
+// edge incarnation (epoch), and cores apply each (edge, epoch, sequence) once.
+syntax = "proto3";
+
+package etio.cluster.v1;
+
+service Summaries {
+  rpc Push(stream PushRequest) returns (stream PushResponse);
+}
+
+message PushRequest {
+  oneof message {
+    Hello hello = 1;
+    Batch batch = 2;
+  }
+}
+
+// First message of every stream.
+message Hello {
+  // Stable identity of the edge.
+  string edge_id = 1;
+  // Incarnation of the edge; greater than any epoch it used before.
+  uint64 epoch = 2;
+  // Window width of the edge, which must match the core's.
+  int64 resolution_ns = 3;
+  // Summary encoding version (see `Batch.summary`).
+  uint32 summary_format = 4;
+  // Server version, for diagnostics.
+  string version = 5;
+  // First sequence the edge can still send to this core (see Collector::hello).
+  uint64 first_seq = 6;
+}
+
+message Batch {
+  // Sequence number within the epoch, starting at 1 and without gaps.
+  uint64 seq = 1;
+  // Window index of the summary.
+  int64 window = 2;
+  // The window summary, postcard-encoded (`etio_engine::WindowSummary`).
+  bytes summary = 3;
+}
+
+message PushResponse {
+  // Highest sequence applied, in order.
+  uint64 acked = 1;
+  // The core refused an out-of-order batch: replay from `acked + 1`.
+  bool gap = 2;
+  // Set when the core refuses the stream (incompatible resolution or format).
+  string error = 3;
+}
