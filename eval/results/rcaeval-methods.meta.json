@@ -1,0 +1,121 @@
+{
+ "environment": {
+  "etio_version": "0.1.0",
+  "dataset": "RCAEval",
+  "dataset_revision": "afeacb11bcc94dadfd1c8f483ee4377b2b8b614e",
+  "python": "3.12.3",
+  "machine": "aarch64",
+  "system": "Linux"
+ },
+ "methods": [
+  "etio",
+  "max_score",
+  "baro",
+  "nsigma",
+  "random_walk",
+  "rcaeval_baro",
+  "rcaeval_nsigma"
+ ],
+ "config": {
+  "model": {
+   "format": "etio.rank-model/v1",
+   "name": "heuristic",
+   "feature_set": 2,
+   "features": [
+    "rel_max",
+    "frac_silent",
+    "log_max",
+    "rank_score",
+    "log_sustained",
+    "log_resource",
+    "log_trace_local",
+    "log_logs",
+    "frac_anomalous",
+    "onset_lead",
+    "has_onset",
+    "walk",
+    "callee_explained",
+    "upstream_anomalous",
+    "downstream_anomalous",
+    "is_entry",
+    "log_latency",
+    "log_errors",
+    "log_traffic"
+   ],
+   "mean": [
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "scale": [
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0,
+    1.0
+   ],
+   "weights": [
+    3.0,
+    2.0,
+    0.5,
+    1.0,
+    0.3,
+    0.4,
+    0.4,
+    0.1,
+    0.5,
+    0.5,
+    0.2,
+    1.5,
+    -1.5,
+    0.5,
+    -0.5,
+    -0.5,
+    0.0,
+    0.0,
+    0.0
+   ],
+   "metadata": {
+    "description": "hand-set weights; replace with a trained model"
+   }
+  },
+  "ensemble": []
+ },
+ "model": "heuristic",
+ "graphs": false,
+ "sources": [
+  "metrics",
+  "traces",
+  "logs"
+ ]
+}
