@@ -1,0 +1,280 @@
+/* Element defaults and the few utilities shared by every view. */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: 1.45;
+  -webkit-text-size-adjust: 100%;
+  text-rendering: optimizeLegibility;
+  scrollbar-color: var(--rule) var(--paper);
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--paper);
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+h1,
+h2,
+h3,
+h4,
+p,
+ol,
+ul,
+dl,
+dd,
+figure {
+  margin: 0;
+}
+
+ol,
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+h1 {
+  font-size: var(--fs-xl);
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: var(--fs-md);
+  font-weight: 600;
+}
+
+h3 {
+  font-size: var(--fs-sm);
+  font-weight: 600;
+}
+
+a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 3px;
+}
+
+a:hover {
+  text-decoration-color: currentColor;
+}
+
+:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+svg {
+  overflow: visible;
+}
+
+svg.pixel {
+  display: inline-block;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+/* Utilities. */
+
+.mono {
+  font-family: var(--font-mono);
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+  text-align: right;
+  white-space: nowrap;
+}
+
+.muted {
+  color: var(--ink-3);
+}
+
+.signal {
+  color: var(--signal-text);
+}
+
+/* A small engraved-style caption: what a value is. */
+.label {
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+
+/* Data tables: hairline rules, tabular figures, no zebra stripes. */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-variant-numeric: tabular-nums;
+}
+
+.table th {
+  padding: 7px 10px 6px;
+  border-bottom: 1px solid var(--ink);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-align: left;
+  color: var(--ink-2);
+  white-space: nowrap;
+}
+
+.table th.num {
+  text-align: right;
+}
+
+.table td {
+  padding: 8px 10px;
+  border-bottom: 1px solid var(--rule-2);
+  vertical-align: middle;
+}
+
+.table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.table tr.row {
+  cursor: pointer;
+}
+
+.table tr.row:hover td,
+.table tr.row.hover td {
+  background: var(--sheet-2);
+}
+
+.table tr.row.current td {
+  box-shadow:
+    inset 0 1px 0 var(--ink),
+    inset 0 -1px 0 var(--ink);
+}
+
+.table tr.row.current td:first-child {
+  box-shadow:
+    inset 3px 0 0 var(--ink),
+    inset 0 1px 0 var(--ink),
+    inset 0 -1px 0 var(--ink);
+}
+
+/* Forms. */
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.input {
+  min-width: 0;
+  height: 32px;
+  padding: 0 10px;
+  border: 1px solid var(--ink-3);
+  border-radius: 0;
+  background: var(--sheet);
+  color: var(--ink);
+}
+
+.input:focus {
+  border-color: var(--ink);
+  outline: none;
+  box-shadow: 0 0 0 1px var(--ink);
+}
+
+.input::placeholder {
+  color: var(--ink-3);
+}
+
+.button {
+  height: 32px;
+  padding: 0 16px;
+  border: 1px solid var(--ink);
+  border-radius: 0;
+  background: var(--ink);
+  color: var(--sheet);
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.button:hover {
+  background: var(--ink-2);
+  border-color: var(--ink-2);
+}
+
+.button:disabled {
+  cursor: default;
+  background: var(--ink-3);
+  border-color: var(--ink-3);
+}
+
+/* Text-only toggles, e.g. filters and preferences. */
+.toggle {
+  display: inline-flex;
+  border: 1px solid var(--rule);
+}
+
+.toggle button {
+  height: 26px;
+  padding: 0 10px;
+  border: 0;
+  border-left: 1px solid var(--rule);
+  background: transparent;
+  color: var(--ink-2);
+  font-size: var(--fs-sm);
+  font-variant-numeric: tabular-nums;
+}
+
+.toggle button:first-child {
+  border-left: 0;
+}
+
+.toggle button:hover {
+  color: var(--ink);
+  background: var(--sheet-2);
+}
+
+.toggle button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

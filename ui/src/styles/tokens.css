@@ -1,0 +1,132 @@
+/*
+ * Design tokens. Two themes: "paper" (warm light, the default) and "carbon"
+ * (dark). The system preference picks one unless the viewer chose one
+ * (`data-theme` on the root element, set by theme.ts).
+ *
+ * Colour is used for meaning only: ink for data, one signal colour for what
+ * is wrong (open incidents, root-cause candidates, abnormal periods), green
+ * and amber for health and warnings. Shading is dithered, never translucent.
+ */
+
+:root {
+  --paper: #ebe8e0;
+  --sheet: #f5f3ed;
+  --sheet-2: #eeebe3;
+  --ink: #171614;
+  --ink-2: #4d4943;
+  --ink-3: #736e66;
+  --rule: #cdc8bc;
+  --rule-2: #dfdbd1;
+  --signal: #cf3e1b;
+  --signal-text: #b3340f;
+  --on-signal: #fff8f1;
+  --ok: #2e6a3b;
+  --warn: #9a5f0c;
+  --focus: #2448c9;
+
+  --bar: #1a1917;
+  --bar-ink: #edeae2;
+  --bar-ink-2: #a39e94;
+  --bar-rule: #34322e;
+
+  /* Pixel art palette (see pixel/sprite.ts). */
+  --px-k: var(--ink);
+  --px-m: var(--ink-2);
+  --px-l: var(--ink-3);
+  --px-p: var(--sheet);
+  --px-s: var(--signal);
+  --px-e: var(--bar-ink-2);
+  --px-u: var(--bar-rule);
+  --px-g: #3a9a4e;
+  --px-a: #c98a1c;
+  --px-o: #171614;
+  --px-q: #fff6ea;
+  --px-c: #d6d0c2;
+  --px-h: #eeeae0;
+  --px-d: #a7a093;
+  --px-v: #151a15;
+  --px-n: #2c3a2d;
+  --px-t: #7fd58a;
+  --px-w: #e6ffe4;
+
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  --fs-xs: 10.5px;
+  --fs-sm: 12px;
+  --fs-md: 13px;
+  --fs-lg: 15px;
+  --fs-xl: 21px;
+
+  --gutter: 24px;
+  --bar-h: 48px;
+  --status-h: 26px;
+
+  color-scheme: light;
+}
+
+:root[data-theme="carbon"] {
+  --paper: #111110;
+  --sheet: #191917;
+  --sheet-2: #201f1c;
+  --ink: #eae6dc;
+  --ink-2: #b2aca0;
+  --ink-3: #8e8981;
+  --rule: #34322e;
+  --rule-2: #262522;
+  --signal: #f2552c;
+  --signal-text: #ff7a55;
+  --on-signal: #160904;
+  --ok: #79c08a;
+  --warn: #e0a645;
+  --focus: #8da6ff;
+
+  --bar: #0b0b0a;
+  --bar-ink: #eae6dc;
+  --bar-ink-2: #8e8981;
+  --bar-rule: #2a2926;
+
+  --px-g: #6fd08a;
+  --px-a: #f0b44a;
+  --px-o: #050505;
+  --px-q: #fff6ea;
+  --px-c: #3e3b35;
+  --px-h: #57534b;
+  --px-d: #2a2824;
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="paper"]) {
+    --paper: #111110;
+    --sheet: #191917;
+    --sheet-2: #201f1c;
+    --ink: #eae6dc;
+    --ink-2: #b2aca0;
+    --ink-3: #8e8981;
+    --rule: #34322e;
+    --rule-2: #262522;
+    --signal: #f2552c;
+    --signal-text: #ff7a55;
+    --on-signal: #160904;
+    --ok: #79c08a;
+    --warn: #e0a645;
+    --focus: #8da6ff;
+
+    --bar: #0b0b0a;
+    --bar-ink: #eae6dc;
+    --bar-ink-2: #8e8981;
+    --bar-rule: #2a2926;
+
+    --px-g: #6fd08a;
+    --px-a: #f0b44a;
+    --px-o: #050505;
+    --px-q: #fff6ea;
+    --px-c: #3e3b35;
+    --px-h: #57534b;
+    --px-d: #2a2824;
+
+    color-scheme: dark;
+  }
+}

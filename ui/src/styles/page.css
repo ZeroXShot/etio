@@ -1,0 +1,96 @@
+/* Page layout shared by the views. */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  max-width: 1560px;
+  margin: 0 auto;
+  padding: 22px var(--gutter) 44px;
+}
+
+.page-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px 40px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--ink);
+}
+
+.page-title {
+  max-width: 720px;
+}
+
+.page-sub {
+  margin-top: 6px;
+  color: var(--ink-2);
+}
+
+.page-readouts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 0;
+}
+
+.page-readouts .readout {
+  padding: 0 22px;
+  border-left: 1px solid var(--rule);
+}
+
+.page-readouts .readout:first-child {
+  padding-left: 0;
+  border-left: 0;
+}
+
+.page-readouts .readout:last-child {
+  padding-right: 0;
+}
+
+.page-readouts .readout-value {
+  font-size: 18px;
+}
+
+.crumbs {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: -6px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.crumbs a {
+  color: var(--ink-2);
+}
+
+.edge-banner {
+  padding: 8px var(--gutter);
+  background: var(--sheet-2);
+  border-bottom: 1px solid var(--rule);
+  color: var(--ink-2);
+}
+
+.edge-banner .label {
+  margin-right: 10px;
+}
+
+@media (max-width: 640px) {
+  :root {
+    --gutter: 16px;
+  }
+
+  .page-readouts {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    width: 100%;
+    gap: 14px 16px;
+  }
+
+  .page-readouts .readout {
+    padding: 0;
+    border-left: 0;
+  }
+}
