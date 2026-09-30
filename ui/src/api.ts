@@ -15,10 +15,19 @@ export interface Status {
   stats: {
     spans: number;
     traces: number;
+    /** Spans shifted to correct clock skew. */
+    skew_adjusted: number;
     logs: number;
     metric_points: number;
+    /** Cumulative points that could not be turned into deltas. */
+    metric_points_unpaired: number;
     windows: number;
     analyses: number;
+    /** Analyses that could not run (not enough history). */
+    analyses_skipped: number;
+    aggregator: { late: number; future: number; sealed: number };
+    /** Absent on servers older than the field. */
+    assembler?: { completed: number; evicted: number; oversized: number };
   };
 }
 
@@ -41,6 +50,8 @@ export interface SeriesScore {
   reference_median: number;
   scale: number;
   peak_value: number;
+  /** Seconds from the anomaly time to the peak. */
+  peak_offset_s?: number;
 }
 
 export interface Signal {
