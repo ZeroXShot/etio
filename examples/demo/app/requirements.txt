@@ -1,0 +1,5 @@
+flask>=3.0,<4
+requests>=2.31,<3
+redis>=5.0,<7
+opentelemetry-distro>=0.48b0
+opentelemetry-exporter-otlp>=1.27
