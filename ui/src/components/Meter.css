@@ -1,0 +1,39 @@
+.meter {
+  display: inline-grid;
+  grid-template-columns: repeat(var(--cells), 3px);
+  gap: 1px;
+  height: 9px;
+  vertical-align: middle;
+}
+
+.meter i {
+  background: var(--rule-2);
+}
+
+.meter i.lit {
+  background: var(--ink);
+}
+
+.meter.signal i.lit {
+  background: var(--signal);
+}
+
+.lamp {
+  flex: none;
+}
+
+.status-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  white-space: nowrap;
+}
+
+.status-mark.open {
+  color: var(--signal-text);
+  font-weight: 600;
+}
+
+.status-mark.resolved {
+  color: var(--ink-3);
+}
