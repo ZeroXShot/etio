@@ -1,0 +1,33 @@
+[package]
+name = "etio-core"
+description = "Core data model and streaming statistics for the Etio root-cause analysis engine"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+serde.workspace = true
+thiserror.workspace = true
+libm = "0.2"
+foldhash.workspace = true
+hashbrown.workspace = true
+parking_lot = "0.12"
+
+[dev-dependencies]
+proptest.workspace = true
+criterion.workspace = true
+serde_json.workspace = true
+postcard = { version = "1.1", features = ["use-std"] }
+
+[[bench]]
+name = "stats"
+harness = false
+
+[lints]
+workspace = true
