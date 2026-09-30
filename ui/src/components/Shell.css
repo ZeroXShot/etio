@@ -1,0 +1,261 @@
+/* The application frame: a dark instrument bar on top, a status bar below. */
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.bar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: stretch;
+  height: var(--bar-h);
+  padding: 0 var(--gutter) 0 0;
+  background: var(--bar);
+  color: var(--bar-ink);
+  border-bottom: 1px solid var(--bar-rule);
+}
+
+.bar-brand {
+  display: flex;
+  align-items: center;
+  padding: 0 22px 0 var(--gutter);
+  margin-right: 6px;
+  border-right: 1px solid var(--bar-rule);
+  color: var(--bar-ink);
+}
+
+.bar-nav {
+  display: flex;
+  align-items: stretch;
+}
+
+.bar-nav a {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0 16px;
+  color: var(--bar-ink-2);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.bar-nav a:hover {
+  color: var(--bar-ink);
+}
+
+.bar-nav a.active {
+  color: var(--bar-ink);
+}
+
+.bar-nav a.active::after {
+  content: "";
+  position: absolute;
+  left: 16px;
+  right: 16px;
+  bottom: -1px;
+  height: 3px;
+  background: var(--bar-ink);
+}
+
+.bar-count {
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  background: var(--signal);
+  color: var(--on-signal);
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 18px;
+  text-align: center;
+}
+
+.bar-instruments {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  margin-left: auto;
+}
+
+.bar-readout {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.25;
+}
+
+.bar-readout span {
+  font-family: var(--font-mono);
+  font-size: 9.5px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--bar-ink-2);
+}
+
+.bar-readout strong {
+  font-family: var(--font-mono);
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+}
+
+.bar-link {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  padding-left: 18px;
+  border-left: 1px solid var(--bar-rule);
+  align-self: stretch;
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--bar-ink-2);
+}
+
+.statusbar {
+  position: sticky;
+  bottom: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  gap: 24px;
+  min-height: var(--status-h);
+  margin-top: auto;
+  padding: 0 var(--gutter);
+  background: var(--sheet);
+  border-top: 1px solid var(--rule);
+  font-family: var(--font-mono);
+  font-size: var(--fs-xs);
+  color: var(--ink-3);
+}
+
+.statusbar-facts,
+.statusbar-prefs {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  white-space: nowrap;
+}
+
+.statusbar-facts span + span::before {
+  content: "";
+  display: inline-block;
+  width: 1px;
+  height: 10px;
+  margin-right: 16px;
+  vertical-align: -1px;
+  background: var(--rule);
+}
+
+.statusbar-facts .warn {
+  color: var(--warn);
+}
+
+.statusbar-prefs {
+  margin-left: auto;
+}
+
+.status-choice {
+  display: inline-flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.status-choice > span {
+  margin-right: 6px;
+}
+
+.status-choice button {
+  padding: 1px 6px;
+  border: 0;
+  background: none;
+  color: var(--ink-3);
+  font: inherit;
+}
+
+.status-choice button:hover {
+  color: var(--ink);
+}
+
+.status-choice button[aria-pressed="true"] {
+  background: var(--ink);
+  color: var(--sheet);
+}
+
+.statusbar-keys kbd {
+  display: inline-block;
+  min-width: 16px;
+  margin: 0 2px;
+  padding: 0 4px;
+  border: 1px solid var(--rule);
+  border-bottom-width: 2px;
+  font: inherit;
+  color: var(--ink-2);
+  text-align: center;
+}
+
+@media (max-width: 1400px) {
+  .statusbar-keys {
+    display: none;
+  }
+}
+
+@media (max-width: 1180px) {
+  .bar-readout.secondary,
+  svg.bar-scope {
+    display: none;
+  }
+}
+
+@media (max-width: 960px) {
+  .statusbar-facts {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .bar-readout {
+    display: none;
+  }
+
+  .bar-brand {
+    padding: 0 14px 0 var(--gutter);
+  }
+
+  .bar-nav a {
+    padding: 0 10px;
+  }
+
+  .bar-nav a.active::after {
+    left: 10px;
+    right: 10px;
+  }
+
+  .bar-link {
+    padding-left: 12px;
+  }
+}
+
+@media (max-width: 520px) {
+  .bar-link {
+    font-size: 0;
+    gap: 0;
+  }
+
+  .statusbar {
+    flex-wrap: wrap;
+    padding-top: 4px;
+    padding-bottom: 4px;
+  }
+
+  .statusbar-prefs {
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin-left: 0;
+  }
+}
