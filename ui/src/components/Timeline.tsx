@@ -155,9 +155,11 @@ export function IncidentWindows({ incident, now }: { incident: Incident; now: nu
     const mx = x(m.t);
     return mx + w + 4 > width ? [mx - w - 4, w] : [mx + 4, w];
   });
+  // Rows are filled from the rightmost label, so that a leader line, which
+  // runs down from its marker, passes left of the labels above it.
   const rows = labelRows(
-    extents.map((e) => e[0]!),
-    extents.map((e) => e[1]!),
+    extents.map(([x0, w]) => -(x0! + w!)),
+    extents.map(([, w]) => w!),
     10,
   );
   const BAND = 26;
@@ -201,7 +203,7 @@ export function IncidentWindows({ incident, now }: { incident: Incident; now: nu
           const y = labelTop + rows[i]! * 15;
           return (
             <g key={m.text} class={`tl-mark ${m.tone}`}>
-              <line x1={mx} x2={mx} y1={0} y2={y - 3} />
+              <line x1={mx} x2={mx} y1={BAND} y2={y - 3} />
               <rect x={mx - 2.5} y={BAND + 2} width={5} height={5} />
               <text x={extents[i]![0]} y={y + 8}>
                 {m.text}
