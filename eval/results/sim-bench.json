@@ -1,0 +1,1358 @@
+[
+  {
+    "scenario": "layered-10-1000003-cpu",
+    "services": 10,
+    "fault": {
+      "target": "svc-3",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-3",
+    "spans": 293181
+  },
+  {
+    "scenario": "layered-10-1000004-delay",
+    "services": 10,
+    "fault": {
+      "target": "svc-5",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 2,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 376039
+  },
+  {
+    "scenario": "layered-10-1000005-loss",
+    "services": 10,
+    "fault": {
+      "target": "svc-4",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-4",
+    "spans": 286303
+  },
+  {
+    "scenario": "layered-10-1000006-errors",
+    "services": 10,
+    "fault": {
+      "target": "svc-8",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 13.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-8",
+    "spans": 100194
+  },
+  {
+    "scenario": "layered-10-1000007-memory_leak",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 20.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 308168
+  },
+  {
+    "scenario": "layered-10-1000008-crash",
+    "services": 10,
+    "fault": {
+      "target": "svc-6",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-6",
+    "spans": 641697
+  },
+  {
+    "scenario": "layered-10-1000009-cpu",
+    "services": 10,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 358459
+  },
+  {
+    "scenario": "layered-10-1000010-delay",
+    "services": 10,
+    "fault": {
+      "target": "svc-2",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-2",
+    "spans": 381375
+  },
+  {
+    "scenario": "layered-10-1000011-loss",
+    "services": 10,
+    "fault": {
+      "target": "svc-5",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 26.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-5",
+    "spans": 250747
+  },
+  {
+    "scenario": "layered-10-1000012-errors",
+    "services": 10,
+    "fault": {
+      "target": "svc-5",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 11.0,
+    "first_rank": 1,
+    "last_rank": 2,
+    "first_top": "svc-5",
+    "spans": 322107
+  },
+  {
+    "scenario": "layered-10-1000013-memory_leak",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 20.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 459279
+  },
+  {
+    "scenario": "layered-10-1000014-crash",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 391256
+  },
+  {
+    "scenario": "layered-10-1000015-cpu",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 746841
+  },
+  {
+    "scenario": "layered-10-1000016-delay",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 258000
+  },
+  {
+    "scenario": "layered-10-1000017-loss",
+    "services": 10,
+    "fault": {
+      "target": "svc-8",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-8",
+    "spans": 995647
+  },
+  {
+    "scenario": "layered-10-1000018-errors",
+    "services": 10,
+    "fault": {
+      "target": "svc-3",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-3",
+    "spans": 763370
+  },
+  {
+    "scenario": "layered-10-1000019-memory_leak",
+    "services": 10,
+    "fault": {
+      "target": "svc-6",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-6",
+    "spans": 702880
+  },
+  {
+    "scenario": "layered-10-1000020-crash",
+    "services": 10,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 363326
+  },
+  {
+    "scenario": "layered-10-1000021-cpu",
+    "services": 10,
+    "fault": {
+      "target": "svc-8",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-8",
+    "spans": 366845
+  },
+  {
+    "scenario": "layered-10-1000022-delay",
+    "services": 10,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 144125
+  },
+  {
+    "scenario": "layered-10-1000023-loss",
+    "services": 10,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 347795
+  },
+  {
+    "scenario": "layered-10-1000024-errors",
+    "services": 10,
+    "fault": {
+      "target": "svc-2",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-2",
+    "spans": 197257
+  },
+  {
+    "scenario": "layered-10-1000025-memory_leak",
+    "services": 10,
+    "fault": {
+      "target": "svc-2",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 50.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-2",
+    "spans": 764942
+  },
+  {
+    "scenario": "layered-10-1000026-crash",
+    "services": 10,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 176206
+  },
+  {
+    "scenario": "layered-30-1000003-cpu",
+    "services": 30,
+    "fault": {
+      "target": "svc-12",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-12",
+    "spans": 633436
+  },
+  {
+    "scenario": "layered-30-1000004-delay",
+    "services": 30,
+    "fault": {
+      "target": "svc-14",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 2,
+    "last_rank": 5,
+    "first_top": "svc-4",
+    "spans": 604917
+  },
+  {
+    "scenario": "layered-30-1000005-loss",
+    "services": 30,
+    "fault": {
+      "target": "svc-14",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-14",
+    "spans": 2215068
+  },
+  {
+    "scenario": "layered-30-1000006-errors",
+    "services": 30,
+    "fault": {
+      "target": "svc-24",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 8.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-24",
+    "spans": 1602297
+  },
+  {
+    "scenario": "layered-30-1000007-memory_leak",
+    "services": 30,
+    "fault": {
+      "target": "svc-3",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-3",
+    "spans": 862852
+  },
+  {
+    "scenario": "layered-30-1000008-crash",
+    "services": 30,
+    "fault": {
+      "target": "svc-21",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-21",
+    "spans": 548882
+  },
+  {
+    "scenario": "layered-30-1000009-cpu",
+    "services": 30,
+    "fault": {
+      "target": "svc-21",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-21",
+    "spans": 1795312
+  },
+  {
+    "scenario": "layered-30-1000010-delay",
+    "services": 30,
+    "fault": {
+      "target": "svc-12",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 2,
+    "last_rank": 1,
+    "first_top": "svc-9",
+    "spans": 1031662
+  },
+  {
+    "scenario": "layered-30-1000011-loss",
+    "services": 30,
+    "fault": {
+      "target": "svc-18",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 20.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-18",
+    "spans": 681389
+  },
+  {
+    "scenario": "layered-30-1000012-errors",
+    "services": 30,
+    "fault": {
+      "target": "svc-17",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 12.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-17",
+    "spans": 1108179
+  },
+  {
+    "scenario": "layered-30-1000013-memory_leak",
+    "services": 30,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 20.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 1251915
+  },
+  {
+    "scenario": "layered-30-1000014-crash",
+    "services": 30,
+    "fault": {
+      "target": "svc-3",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-3",
+    "spans": 1369561
+  },
+  {
+    "scenario": "layered-30-1000015-cpu",
+    "services": 30,
+    "fault": {
+      "target": "svc-2",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-2",
+    "spans": 631597
+  },
+  {
+    "scenario": "layered-30-1000016-delay",
+    "services": 30,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 2,
+    "first_top": "svc-1",
+    "spans": 685432
+  },
+  {
+    "scenario": "layered-30-1000017-loss",
+    "services": 30,
+    "fault": {
+      "target": "svc-25",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 28.0,
+    "first_rank": 3,
+    "last_rank": 1,
+    "first_top": "svc-5",
+    "spans": 1048981
+  },
+  {
+    "scenario": "layered-30-1000018-errors",
+    "services": 30,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 477804
+  },
+  {
+    "scenario": "layered-30-1000019-memory_leak",
+    "services": 30,
+    "fault": {
+      "target": "svc-18",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 1,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-18",
+    "spans": 1972258
+  },
+  {
+    "scenario": "layered-30-1000020-crash",
+    "services": 30,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 615959
+  },
+  {
+    "scenario": "layered-30-1000021-cpu",
+    "services": 30,
+    "fault": {
+      "target": "svc-26",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-26",
+    "spans": 1953684
+  },
+  {
+    "scenario": "layered-30-1000022-delay",
+    "services": 30,
+    "fault": {
+      "target": "svc-25",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 3,
+    "first_top": "svc-25",
+    "spans": 553318
+  },
+  {
+    "scenario": "layered-30-1000023-loss",
+    "services": 30,
+    "fault": {
+      "target": "svc-19",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 26.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-19",
+    "spans": 998727
+  },
+  {
+    "scenario": "layered-30-1000024-errors",
+    "services": 30,
+    "fault": {
+      "target": "svc-5",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 11.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-5",
+    "spans": 431568
+  },
+  {
+    "scenario": "layered-30-1000025-memory_leak",
+    "services": 30,
+    "fault": {
+      "target": "svc-6",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 50.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-6",
+    "spans": 1127386
+  },
+  {
+    "scenario": "layered-30-1000026-crash",
+    "services": 30,
+    "fault": {
+      "target": "svc-20",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-20",
+    "spans": 560513
+  },
+  {
+    "scenario": "layered-100-1000003-cpu",
+    "services": 100,
+    "fault": {
+      "target": "svc-41",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 13.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-41",
+    "spans": 3283185
+  },
+  {
+    "scenario": "layered-100-1000004-delay",
+    "services": 100,
+    "fault": {
+      "target": "svc-41",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-41",
+    "spans": 5053057
+  },
+  {
+    "scenario": "layered-100-1000005-loss",
+    "services": 100,
+    "fault": {
+      "target": "svc-44",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-44",
+    "spans": 2708026
+  },
+  {
+    "scenario": "layered-100-1000006-errors",
+    "services": 100,
+    "fault": {
+      "target": "svc-84",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 13.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-84",
+    "spans": 2077941
+  },
+  {
+    "scenario": "layered-100-1000007-memory_leak",
+    "services": 100,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 75.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 1700173
+  },
+  {
+    "scenario": "layered-100-1000008-crash",
+    "services": 100,
+    "fault": {
+      "target": "svc-64",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 1,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-64",
+    "spans": 1605672
+  },
+  {
+    "scenario": "layered-100-1000009-cpu",
+    "services": 100,
+    "fault": {
+      "target": "svc-72",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-72",
+    "spans": 1846474
+  },
+  {
+    "scenario": "layered-100-1000010-delay",
+    "services": 100,
+    "fault": {
+      "target": "svc-30",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 2,
+    "last_rank": 1,
+    "first_top": "svc-18",
+    "spans": 5196487
+  },
+  {
+    "scenario": "layered-100-1000011-loss",
+    "services": 100,
+    "fault": {
+      "target": "svc-49",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 25.0,
+    "first_rank": 3,
+    "last_rank": 1,
+    "first_top": "svc-64",
+    "spans": 2556116
+  },
+  {
+    "scenario": "layered-100-1000012-errors",
+    "services": 100,
+    "fault": {
+      "target": "svc-56",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 11.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-56",
+    "spans": 2584007
+  },
+  {
+    "scenario": "layered-100-1000013-memory_leak",
+    "services": 100,
+    "fault": {
+      "target": "svc-1",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-1",
+    "spans": 3102371
+  },
+  {
+    "scenario": "layered-100-1000014-crash",
+    "services": 100,
+    "fault": {
+      "target": "svc-7",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-7",
+    "spans": 2223207
+  },
+  {
+    "scenario": "layered-100-1000015-cpu",
+    "services": 100,
+    "fault": {
+      "target": "svc-5",
+      "kind": {
+        "type": "cpu",
+        "factor": 6.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-5",
+    "spans": 4631823
+  },
+  {
+    "scenario": "layered-100-1000016-delay",
+    "services": 100,
+    "fault": {
+      "target": "svc-3",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-3",
+    "spans": 5886211
+  },
+  {
+    "scenario": "layered-100-1000017-loss",
+    "services": 100,
+    "fault": {
+      "target": "svc-85",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-85",
+    "spans": 6032299
+  },
+  {
+    "scenario": "layered-100-1000018-errors",
+    "services": 100,
+    "fault": {
+      "target": "svc-22",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 8.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-22",
+    "spans": 2350098
+  },
+  {
+    "scenario": "layered-100-1000019-memory_leak",
+    "services": 100,
+    "fault": {
+      "target": "svc-60",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 190.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-60",
+    "spans": 1866674
+  },
+  {
+    "scenario": "layered-100-1000020-crash",
+    "services": 100,
+    "fault": {
+      "target": "svc-2",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-2",
+    "spans": 1991709
+  },
+  {
+    "scenario": "layered-100-1000021-cpu",
+    "services": 100,
+    "fault": {
+      "target": "redis-1",
+      "kind": {
+        "type": "cpu",
+        "factor": 8.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "redis-1",
+    "spans": 1756695
+  },
+  {
+    "scenario": "layered-100-1000022-delay",
+    "services": 100,
+    "fault": {
+      "target": "svc-87",
+      "kind": {
+        "type": "delay",
+        "ms": 60.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 7.0,
+    "first_rank": 3,
+    "last_rank": 1,
+    "first_top": "svc-65",
+    "spans": 2425794
+  },
+  {
+    "scenario": "layered-100-1000023-loss",
+    "services": 100,
+    "fault": {
+      "target": "svc-74",
+      "kind": {
+        "type": "loss",
+        "rate": 0.15
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 1,
+    "detection_delay_s": 11.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-74",
+    "spans": 1592820
+  },
+  {
+    "scenario": "layered-100-1000024-errors",
+    "services": 100,
+    "fault": {
+      "target": "svc-20",
+      "kind": {
+        "type": "errors",
+        "rate": 0.25
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 10.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-20",
+    "spans": 2730465
+  },
+  {
+    "scenario": "layered-100-1000025-memory_leak",
+    "services": 100,
+    "fault": {
+      "target": "svc-18",
+      "kind": {
+        "type": "memory_leak",
+        "mb_per_s": 4.0
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 15.0,
+    "first_rank": 1,
+    "last_rank": 1,
+    "first_top": "svc-18",
+    "spans": 3057600
+  },
+  {
+    "scenario": "layered-100-1000026-crash",
+    "services": 100,
+    "fault": {
+      "target": "svc-72",
+      "kind": {
+        "type": "crash"
+      },
+      "start_s": 900.0,
+      "duration_s": 300.0
+    },
+    "false_incidents": 0,
+    "detection_delay_s": 9.0,
+    "first_rank": 2,
+    "last_rank": 2,
+    "first_top": "svc-65",
+    "spans": 1423352
+  }
+]
