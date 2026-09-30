@@ -1,0 +1,13 @@
+.git
+target
+data
+eval/out
+**/node_modules
+ui/dist
+python/.venv
+**/__pycache__
+*.pem
+*.key
+secrets
+# The rust:<version> base image provides the toolchain.
+rust-toolchain.toml
