@@ -1,0 +1,29 @@
+[package]
+name = "etio-sim"
+description = "Deterministic microservice-system simulator with fault injection, producing OpenTelemetry data"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+
+[dependencies]
+etio-core.workspace = true
+etio-analysis.workspace = true
+etio-pipeline.workspace = true
+etio-engine.workspace = true
+etio-otlp.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+prost.workspace = true
+
+[dev-dependencies]
+proptest.workspace = true
+
+[lints]
+workspace = true
