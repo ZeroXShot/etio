@@ -1,0 +1,59 @@
+.incident-log td {
+  height: 46px;
+}
+
+.incident-id {
+  text-decoration: none;
+  color: var(--ink);
+}
+
+.incident-id:hover {
+  text-decoration: underline;
+}
+
+.cell-note {
+  display: block;
+  margin-top: 1px;
+  font-size: var(--fs-sm);
+  color: var(--ink-3);
+}
+
+.suspect {
+  display: inline-grid;
+  grid-template-columns: minmax(96px, max-content) auto 40px;
+  align-items: center;
+  gap: 12px;
+}
+
+.suspect strong {
+  font-weight: 600;
+}
+
+@media (max-width: 1100px) {
+  .incident-log th:nth-child(7),
+  .incident-log td:nth-child(7),
+  .incident-log th:nth-child(8),
+  .incident-log td:nth-child(8) {
+    display: none;
+  }
+}
+
+@media (max-width: 760px) {
+  .incident-log th:nth-child(2),
+  .incident-log td:nth-child(2),
+  .incident-log th:nth-child(4),
+  .incident-log td:nth-child(4) {
+    display: none;
+  }
+
+  .suspect .meter {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .incident-log th:nth-child(5),
+  .incident-log td:nth-child(5) {
+    display: none;
+  }
+}
