@@ -61,11 +61,6 @@ export function day(ns: number, zone: Zone = "local"): string {
   return `${t.y}-${p2(t.mo)}-${p2(t.d)}`;
 }
 
-/** "2026-09-30 14:03:12". */
-export function formatTime(ns: number, zone: Zone = "local"): string {
-  return `${day(ns, zone)} ${clock(ns, zone)}`;
-}
-
 /** The zone's name as an offset from UTC at `ns`, e.g. "UTC+02:00". */
 export function zoneLabel(zone: Zone, ns: number): string {
   if (zone === "utc") return "UTC";
@@ -85,10 +80,6 @@ export function formatDuration(seconds: number): string {
   if (h < 24) return m % 60 ? `${h}h ${m % 60}m` : `${h}h`;
   const d = Math.floor(h / 24);
   return h % 24 ? `${d}d ${h % 24}h` : `${d}d`;
-}
-
-export function durationBetween(fromNs: number, toNs: number): string {
-  return formatDuration((toNs - fromNs) / NS_PER_S);
 }
 
 /** A signed duration: "+30s", "−5s", "+9m 20s". */
