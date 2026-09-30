@@ -1,0 +1,108 @@
+# Etio demo: a small instrumented shop, an OpenTelemetry Collector, Etio, and
+# a load generator that injects a fault after the warm-up.
+#
+#   docker compose up -d --build
+#   open http://127.0.0.1:7070          (Etio UI)
+#   curl -X POST 'http://127.0.0.1:8089/chaos/cart?cpu_factor=8&duration_s=300'
+#
+# Published ports bind to 127.0.0.1 only; change them with ETIO_UI_PORT and
+# CHAOS_PORT if they are taken.
+name: etio-demo
+
+x-service: &service
+  build: ./app
+  image: etio-demo-app:dev
+  restart: unless-stopped
+  depends_on: [otel-collector]
+  environment: &otel
+    OTEL_EXPORTER_OTLP_ENDPOINT: http://otel-collector:4317
+    OTEL_EXPORTER_OTLP_PROTOCOL: grpc
+    OTEL_TRACES_EXPORTER: otlp
+    OTEL_METRICS_EXPORTER: otlp
+    OTEL_LOGS_EXPORTER: otlp
+    OTEL_METRIC_EXPORT_INTERVAL: "5000"
+    OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED: "true"
+    OTEL_RESOURCE_ATTRIBUTES: deployment.environment=demo
+
+services:
+  etio:
+    build: ../..
+    image: etio:dev
+    restart: unless-stopped
+    environment:
+      # A 5 s resolution and a 10 min warm-up make the demo converge quickly;
+      # the defaults (10 s, ~25 min) suit production better.
+      ETIO__ENGINE__RESOLUTION: 5s
+      ETIO__ENGINE__INCIDENT__WARMUP: 10m
+      ETIO__LOG__FORMAT: pretty
+    ports:
+      - "127.0.0.1:${ETIO_UI_PORT:-7070}:7070"
+    volumes:
+      - etio-data:/var/lib/etio
+
+  otel-collector:
+    image: otel/opentelemetry-collector-contrib:0.135.0
+    restart: unless-stopped
+    command: ["--config=/etc/otelcol/config.yaml"]
+    volumes:
+      - ./otel-collector.yaml:/etc/otelcol/config.yaml:ro
+    depends_on: [etio]
+
+  frontend:
+    <<: *service
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: frontend
+      CALLS: catalog,cart,checkout
+      WORK_MS: "2"
+
+  catalog:
+    <<: *service
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: catalog
+      WORK_MS: "4"
+
+  cart:
+    <<: *service
+    depends_on: [otel-collector, redis]
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: cart
+      REDIS_HOST: redis
+      WORK_MS: "3"
+
+  checkout:
+    <<: *service
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: checkout
+      CALLS: payment,cart
+      WORK_MS: "3"
+
+  payment:
+    <<: *service
+    environment:
+      <<: *otel
+      OTEL_SERVICE_NAME: payment
+      WORK_MS: "5"
+
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+
+  loadgen:
+    build: ./app
+    image: etio-demo-app:dev
+    restart: unless-stopped
+    command: ["python", "loadgen.py"]
+    depends_on: [frontend]
+    environment:
+      RATE: "15"
+      # A slow payment service 15 minutes in, for five minutes.
+      SCHEDULE: ${SCHEDULE:-payment:latency_ms=300@15m+5m}
+    ports:
+      - "127.0.0.1:${CHAOS_PORT:-8089}:8089"
+
+volumes:
+  etio-data:
