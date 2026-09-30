@@ -1,0 +1,43 @@
+[package]
+name = "etio-otlp"
+description = "OpenTelemetry protocol support for Etio: selective zero-copy decoding of OTLP traces, metrics and logs"
+version.workspace = true
+edition.workspace = true
+rust-version.workspace = true
+license.workspace = true
+repository.workspace = true
+homepage.workspace = true
+authors.workspace = true
+keywords.workspace = true
+categories.workspace = true
+build = "build.rs"
+
+[dependencies]
+etio-core.workspace = true
+etio-pipeline.workspace = true
+etio-engine.workspace = true
+serde.workspace = true
+serde_json.workspace = true
+thiserror.workspace = true
+foldhash.workspace = true
+prost.workspace = true
+tonic.workspace = true
+tonic-prost.workspace = true
+bytes.workspace = true
+
+[build-dependencies]
+protox = "0.9"
+tonic-build = "0.14"
+tonic-prost-build = "0.14"
+
+[dev-dependencies]
+proptest.workspace = true
+criterion.workspace = true
+etio-core.workspace = true
+
+[[bench]]
+name = "decode"
+harness = false
+
+[lints]
+workspace = true
