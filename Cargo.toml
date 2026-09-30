@@ -1,0 +1,99 @@
+[workspace]
+resolver = "3"
+members = [
+    "crates/etio-core",
+    "crates/etio-analysis",
+    "crates/etio-pipeline",
+    "crates/etio-engine",
+    "crates/etio-otlp",
+    "crates/etio-server",
+    "crates/etio-sim",
+    "crates/etio-py",
+]
+# The Python extension is built by maturin (see python/pyproject.toml); plain
+# `cargo build`/`cargo test` skip it so they work without Python headers.
+default-members = [
+    "crates/etio-core",
+    "crates/etio-analysis",
+    "crates/etio-pipeline",
+    "crates/etio-engine",
+    "crates/etio-otlp",
+    "crates/etio-server",
+    "crates/etio-sim",
+]
+
+[workspace.package]
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.88"
+license = "Apache-2.0"
+repository = "https://github.com/ZeroXShot/etio"
+homepage = "https://github.com/ZeroXShot/etio"
+authors = ["The Etio Authors"]
+keywords = ["observability", "root-cause-analysis", "opentelemetry", "aiops", "anomaly-detection"]
+categories = ["development-tools::profiling", "science"]
+
+[workspace.dependencies]
+etio-core = { path = "crates/etio-core", version = "0.1.0" }
+etio-analysis = { path = "crates/etio-analysis", version = "0.1.0" }
+etio-pipeline = { path = "crates/etio-pipeline", version = "0.1.0" }
+etio-engine = { path = "crates/etio-engine", version = "0.1.0" }
+etio-otlp = { path = "crates/etio-otlp", version = "0.1.0" }
+etio-sim = { path = "crates/etio-sim", version = "0.1.0" }
+
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+thiserror = "2.0"
+smallvec = { version = "1.13", features = ["serde", "union", "const_generics"] }
+foldhash = "0.2"
+hashbrown = { version = "0.17", features = ["serde"] }
+
+prost = "0.14"
+tonic = { version = "0.14", default-features = false, features = ["codegen", "transport", "router", "server", "channel", "gzip", "zstd"] }
+tonic-prost = "0.14"
+bytes = "1.10"
+
+# Test and benchmark tooling.
+proptest = "1.6"
+criterion = { version = "0.8", default-features = false, features = ["cargo_bench_support"] }
+approx = "0.5"
+
+[workspace.lints.rust]
+unsafe_code = "deny"
+missing_docs = "warn"
+rust_2018_idioms = { level = "warn", priority = -1 }
+unused_qualifications = "warn"
+
+[workspace.lints.clippy]
+all = { level = "warn", priority = -1 }
+dbg_macro = "warn"
+todo = "warn"
+unimplemented = "warn"
+unwrap_used = "warn"
+print_stdout = "warn"
+print_stderr = "warn"
+float_cmp = "warn"
+needless_pass_by_value = "warn"
+redundant_clone = "warn"
+semicolon_if_nothing_returned = "warn"
+manual_let_else = "warn"
+explicit_iter_loop = "warn"
+inefficient_to_string = "warn"
+large_types_passed_by_value = "warn"
+
+[profile.release]
+lto = "thin"
+codegen-units = 1
+# Function names stay in panics and profiles; line tables would triple the binary.
+strip = "debuginfo"
+
+[profile.bench]
+inherits = "release"
+debug = true
+
+# Fast, still-optimised builds for property tests and simulations.
+[profile.test]
+opt-level = 1
+
+[profile.dev.package."*"]
+opt-level = 2
