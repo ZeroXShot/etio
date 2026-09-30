@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: etio
+spec:
+  serviceName: etio
+  replicas: 1          # standalone; use the edge/core roles to scale out
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: etio
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: etio
+    spec:
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 65532
+        runAsGroup: 65532
+        fsGroup: 65532
+        seccompProfile:
+          type: RuntimeDefault
+      terminationGracePeriodSeconds: 30   # drains the queue and writes a final snapshot
+      containers:
+        - name: etio
+          image: etio
+          args: ["serve", "--config", "/etc/etio/etio.toml"]
+          ports:
+            - { name: otlp-grpc, containerPort: 4317 }
+            - { name: otlp-http, containerPort: 4318 }
+            - { name: api, containerPort: 7070 }
+          readinessProbe:
+            httpGet: { path: /readyz, port: api }
+            periodSeconds: 10
+          livenessProbe:
+            httpGet: { path: /healthz, port: api }
+            periodSeconds: 20
+          resources:
+            requests: { cpu: 500m, memory: 256Mi }
+            limits: { memory: 1Gi }
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities: { drop: ["ALL"] }
+          volumeMounts:
+            - { name: config, mountPath: /etc/etio, readOnly: true }
+            - { name: tokens, mountPath: /run/secrets/etio, readOnly: true }
+            - { name: data, mountPath: /var/lib/etio }
+      volumes:
+        - name: config
+          configMap: { name: etio }
+        - name: tokens
+          secret: { secretName: etio-tokens }
+  volumeClaimTemplates:
+    - metadata:
+        name: data
+      spec:
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi

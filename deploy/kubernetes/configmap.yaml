@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: etio
+data:
+  etio.toml: |
+    # See `etio config default` for every setting.
+    [auth]
+    # Mounted from the `etio-tokens` Secret (create it first, see README).
+    ingest_token_file = "/run/secrets/etio/ingest"
+    read_token_file = "/run/secrets/etio/read"
+
+    [storage]
+    dir = "/var/lib/etio"
+
+    [log]
+    format = "json"

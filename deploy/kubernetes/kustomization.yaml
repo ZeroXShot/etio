@@ -1,0 +1,16 @@
+# Standalone Etio on Kubernetes:  kubectl apply -k deploy/kubernetes
+# Set the image to a published tag (or your registry) before applying.
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+labels:
+  - pairs:
+      app.kubernetes.io/name: etio
+    includeSelectors: true
+resources:
+  - configmap.yaml
+  - statefulset.yaml
+  - service.yaml
+images:
+  - name: etio
+    newName: ghcr.io/zeroxshot/etio
+    newTag: "0.1.0"
