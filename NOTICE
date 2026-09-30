@@ -1,0 +1,6 @@
+Etio
+Copyright The Etio Authors
+
+This product includes the OpenTelemetry protocol definitions
+(proto/opentelemetry), Copyright The OpenTelemetry Authors, licensed under
+the Apache License 2.0 (see proto/opentelemetry/LICENSE).
