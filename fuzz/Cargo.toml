@@ -1,0 +1,54 @@
+# Fuzz targets for everything that parses untrusted bytes.
+#
+#   cargo install cargo-fuzz
+#   cargo +nightly fuzz run otlp_traces -- -max_total_time=300
+[package]
+name = "etio-fuzz"
+version = "0.0.0"
+publish = false
+edition = "2024"
+license = "Apache-2.0"
+
+[package.metadata]
+cargo-fuzz = true
+
+# Not part of the main workspace: it needs nightly and libFuzzer.
+[workspace]
+
+[dependencies]
+libfuzzer-sys = "0.4"
+bytes = "1"
+postcard = { version = "1.1", features = ["use-std"] }
+etio-core = { path = "../crates/etio-core" }
+etio-engine = { path = "../crates/etio-engine" }
+etio-otlp = { path = "../crates/etio-otlp" }
+
+[[bin]]
+name = "otlp_traces"
+path = "fuzz_targets/otlp_traces.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "otlp_metrics"
+path = "fuzz_targets/otlp_metrics.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "otlp_logs"
+path = "fuzz_targets/otlp_logs.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "otlp_json"
+path = "fuzz_targets/otlp_json.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "window_summary"
+path = "fuzz_targets/window_summary.rs"
+test = false
+doc = false
