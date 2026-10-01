@@ -33,7 +33,7 @@ jobs:
           cp target/release/etio LICENSE README.md "$name/"
           tar czf "$name.tar.gz" "$name"
           shasum -a 256 "$name.tar.gz" > "$name.tar.gz.sha256"
-      - uses: actions/attest-build-provenance@v2
+      - uses: actions/attest-build-provenance@v4
         with:
           subject-path: etio-*.tar.gz
       - uses: softprops/action-gh-release@v3
