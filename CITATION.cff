@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use Etio, please cite it using the metadata below."
+title: "Etio: streaming root-cause analysis for OpenTelemetry-instrumented systems"
+type: software
+authors:
+  - family-names: "González-Vázquez"
+    given-names: "Joaquin J."
+    orcid: "https://orcid.org/0009-0008-3352-8844"
+repository-code: "https://github.com/ZeroXShot/etio"
+license: Apache-2.0
+version: "0.1.0"
+date-released: "2026-10-03"
+abstract: >-
+  Etio ingests traces, metrics and logs over OTLP, detects anomalies per
+  signal, groups them into incidents, and ranks the services most likely to
+  have caused each incident, with the evidence behind the ranking.
+keywords:
+  - root cause analysis
+  - microservices
+  - observability
+  - OpenTelemetry
+  - AIOps
